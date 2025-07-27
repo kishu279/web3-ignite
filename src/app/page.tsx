@@ -1,9 +1,9 @@
 import AirDrop from "@/components/AirDrop";
+import CheckBalance from "@/components/CheckBalance";
 import GetKeyPair from "@/components/GetKeyPair";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Home() {
-
   return (
     <div className="relative flex flex-col items-center justify-center mx-auto max-w-7xl">
       {/* Header Section */}
@@ -45,9 +45,7 @@ export default function Home() {
             </div>
           </TabsContent>
           <TabsContent value="balance">
-            <div>
-              <p>checking balance will be coming soon</p>
-            </div>
+            <CheckBalance />
           </TabsContent>
         </Tabs>
       </section>

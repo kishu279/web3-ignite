@@ -8,18 +8,18 @@ import {
   devnet,
   lamports,
 } from "@solana/kit";
-import { airdropSolanaTokens } from "@/lib/utils/actions";
+// import { airdropSolanaTokens } from "@/lib/utils/actions";
 import { useEffect, useState } from "react";
 import { toast } from "sonner";
 
-// const rpc = createSolanaRpc(devnet("http://127.0.0.1:8899"));
-// const rpcSubscriptions = createSolanaRpcSubscriptions(
-//   devnet("ws://127.0.0.1:8900")
-// );
+const rpc = createSolanaRpc(devnet("http://127.0.0.1:8899"));
+const rpcSubscriptions = createSolanaRpcSubscriptions(
+  devnet("ws://127.0.0.1:8900")
+);
 
-// const airdrop = airdropFactory({ rpc, rpcSubscriptions });
+const airdrop = airdropFactory({ rpc, rpcSubscriptions });
 
-// const lamp: bigint = 1000000000n;
+const lamp: bigint = 1000000000n;
 
 export default function AirDrop() {
   const [publicKey, setPublicKey] = useState("");
@@ -38,13 +38,13 @@ export default function AirDrop() {
     console.log("Public Key ", publicKey);
 
     try {
-      // const response = await airdrop({
-      //   commitment: "confirmed",
-      //   recipientAddress: address(publicKey),
-      //   lamports: lamports(lamp),
-      // });
+      const response = await airdrop({
+        commitment: "confirmed",
+        recipientAddress: address(publicKey),
+        lamports: lamports(lamp),
+      });
 
-      const response = await airdropSolanaTokens(publicKey);
+      // const response = await airdropSolanaTokens(publicKey);
       console.log("###DEVNET RESPONSE##", { response });
 
       if (response) {

@@ -35,7 +35,9 @@ export async function generateKeyPair(): Promise<KeyPair> {
   return { publicKey, privateKey };
 }
 
-export async function airdropSolanaTokens(publicKey: string): Signature {
+export async function airdropSolanaTokens(
+  publicKey: string
+): Promise<Signature> {
   //
   const response = await airdrop({
     commitment: "confirmed",
@@ -46,4 +48,13 @@ export async function airdropSolanaTokens(publicKey: string): Signature {
   console.log("####Lamports Added", { response });
 
   return response;
+}
+
+// get the account balance
+export async function getBalance(publicKey: string): Promise<bigint> {
+  const { value } = await rpc.getBalance(address(publicKey)).send();
+
+  console.log("###Balance Value", { value });
+
+  return value / lamp; // Convert lamports to SOL
 }
