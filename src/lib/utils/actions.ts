@@ -8,9 +8,10 @@ import {
   createSolanaRpcSubscriptions,
   devnet,
   lamports,
+  Signature,
 } from "@solana/kit";
 
-const lamp: bigint = 10000000000n;
+const lamp: bigint = 1000000000n;
 
 interface KeyPair {
   publicKey: string;
@@ -18,8 +19,10 @@ interface KeyPair {
 }
 
 const keypair = Keypair.generate();
-const rpc = createSolanaRpc(devnet("http://127.0.0.1:8899"));
-const rpcSubscriptions = createSolanaRpcSubscriptions(devnet("ws://127.0.0.1:8899"));
+const rpc = createSolanaRpc(devnet("https://api.devnet.solana.com"));
+const rpcSubscriptions = createSolanaRpcSubscriptions(
+  devnet("wss://api.devnet.solana.com")
+);
 
 const airdrop = airdropFactory({ rpc, rpcSubscriptions });
 
@@ -32,7 +35,7 @@ export async function generateKeyPair(): Promise<KeyPair> {
   return { publicKey, privateKey };
 }
 
-export async function airdropSolanaTokens(publicKey: string) {
+export async function airdropSolanaTokens(publicKey: string): Signature {
   //
   const response = await airdrop({
     commitment: "confirmed",
@@ -41,4 +44,6 @@ export async function airdropSolanaTokens(publicKey: string) {
   });
 
   console.log("####Lamports Added", { response });
+
+  return response;
 }
