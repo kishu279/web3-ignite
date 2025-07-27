@@ -1,0 +1,7 @@
+What to do??? 
+1. create a key pair value
+2. airdrop some SOL token
+3. get balance
+4. send solana token
+
+5. create tokens (spl)
