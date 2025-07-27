@@ -20,6 +20,50 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Solana Local Validator Setup
+
+To avoid RPC connection issues and rate limits when developing with Solana, it's recommended to run a local validator.
+
+### Prerequisites
+
+- **Solana CLI** - Install from [Solana CLI Installation Guide](https://docs.solana.com/cli/install-solana-cli-tools)
+- **Rust** - Install from [Rust Installation Guide](https://rustup.rs/)
+
+### Setup Local Validator
+
+1. Start the local validator:
+
+```bash
+solana-test-validator
+```
+
+2. Configure Solana CLI to use the local validator:
+
+```bash
+solana config set --url http://127.0.0.1:8899
+```
+
+3. Verify the connection:
+
+```bash
+solana cluster-version
+```
+
+The local validator will run on `http://127.0.0.1:8899` and provide you with a development environment that doesn't have rate limits.
+
+## Solana Development Resources
+
+This project uses the following Solana libraries and resources for development:
+
+### Libraries
+
+- **@solana/web3.js** - [Documentation](https://docs.solana.com/developing/clients/javascript-api) - Official Solana JavaScript SDK
+- **@solana/kit** - [Documentation](https://github.com/solana-labs/solana-kit) - Solana development toolkit
+
+### Documentation
+
+- **Solana Cookbook** - [https://solanacookbook.com/](https://solanacookbook.com/) - Comprehensive guides and code examples for Solana development
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
