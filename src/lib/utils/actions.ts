@@ -18,7 +18,6 @@ interface KeyPair {
   privateKey: Uint8Array<ArrayBufferLike>;
 }
 
-const keypair = Keypair.generate();
 const rpc = createSolanaRpc(devnet("https://api.devnet.solana.com"));
 const rpcSubscriptions = createSolanaRpcSubscriptions(
   devnet("wss://api.devnet.solana.com")
@@ -28,6 +27,7 @@ const airdrop = airdropFactory({ rpc, rpcSubscriptions });
 
 // function to create a key pair value
 export async function generateKeyPair(): Promise<KeyPair> {
+  const keypair = Keypair.generate();
   const publicKey = keypair.publicKey.toBase58();
   console.log("Public Key:", publicKey);
   const privateKey = keypair.secretKey;

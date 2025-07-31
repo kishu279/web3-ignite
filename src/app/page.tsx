@@ -1,6 +1,7 @@
 import AirDrop from "@/components/AirDrop";
 import CheckBalance from "@/components/CheckBalance";
 import GetKeyPair from "@/components/GetKeyPair";
+import SendSol from "@/components/SendSol";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 
 export default function Home() {
@@ -40,9 +41,7 @@ export default function Home() {
             <AirDrop />
           </TabsContent>
           <TabsContent value="send-sol">
-            <div>
-              <p>Sending will be coming soon</p>
-            </div>
+            <SendSol />
           </TabsContent>
           <TabsContent value="balance">
             <CheckBalance />
